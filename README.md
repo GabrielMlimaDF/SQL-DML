@@ -36,6 +36,21 @@ SELECT nome AS NomeCliente, cidade AS CidadeCliente
 FROM Clientes AS c
 WHERE c.cidade = 'São Paulo';
 
+-- Podemos usar IN e NOT IN junto com WHERE
+SELECT *
+FROM Clientes
+WHERE Cidade IN ('salvador','goania');
+
+--Podemos realizer subconsultas utilizando IN de forma não correlacionada e correlacionada
+SELECT *
+FROM Clientes
+WHERE Cidade IN (SELECT Capital FROM Capitais);
+
+--Correlacionadas Contexto do EXIST
+SELECT *
+FROM Capitais c
+WHERE EXISTS (SELECT Cidade FROM Clientes AS cl WHERE cl.cidade = c.capitais);
+
 
 -- Inserir um novo cliente
 INSERT INTO Clientes (nome, email, cidade)
