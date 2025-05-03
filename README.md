@@ -51,6 +51,31 @@ SELECT *
 FROM Capitais c
 WHERE EXISTS (SELECT Cidade FROM Clientes AS cl WHERE cl.cidade = c.capitais);
 
+--Group BY usado para agregação 
+SELECT vendedor, SUM(valor) AS total_vendas
+FROM vendas
+GROUP BY vendedor;
+
+1. COUNT() – Contar registros
+2. SUM() – Soma de valores
+3. AVG() – Média
+4. MAX() – Valor máximo
+5. MIN() – Valor mínimo
+--PODE USAR MULTIPLAS FUNÇÕES 
+SELECT categoria,
+       COUNT(*) AS total_produtos,
+       SUM(preco) AS soma_precos,
+       AVG(preco) AS media_precos,
+       MAX(preco) AS maior_preco,
+       MIN(preco) AS menor_preco
+FROM produtos
+GROUP BY categoria;
+
+--Group By utilizando HAVING
+SELECT vendedor, SUM(valor) AS total_vendas
+FROM vendas
+GROUP BY vendedor
+HAVING SUM(valor) > 10000;
 
 -- Inserir um novo cliente
 INSERT INTO Clientes (nome, email, cidade)
