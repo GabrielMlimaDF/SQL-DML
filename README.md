@@ -77,6 +77,11 @@ FROM vendas
 GROUP BY vendedor
 HAVING SUM(valor) > 10000;
 
+-- Seleciona todos os produtos e ordena do mais caro para o mais barato
+SELECT *
+FROM Produtos
+ORDER BY Preco DESC;
+
 -- Inserir um novo cliente
 INSERT INTO Clientes (nome, email, cidade)
 VALUES ('Marcos Souza', 'marcos@email.com', 'Belo Horizonte');
